@@ -20,8 +20,7 @@ public class WebController {
 
     @RequestMapping("/redirect/{shortKey}")
     public String redirect(@PathVariable("shortKey") String shortKey) throws NotFoundException {
-        String originUrl = shortUrlService.findOriginUrl(shortKey);
-        return "redirect:" + originUrl;
+        return "redirect:" + shortUrlService.findOriginUrl(shortKey);
     }
 
 }

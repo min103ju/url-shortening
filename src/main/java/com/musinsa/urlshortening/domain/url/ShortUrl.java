@@ -1,5 +1,6 @@
 package com.musinsa.urlshortening.domain.url;
 
+import com.musinsa.urlshortening.constants.Constants;
 import com.musinsa.urlshortening.utils.CommonUtils;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
@@ -47,8 +48,7 @@ public class ShortUrl {
         CommonUtils.validateUrl(url);
         this.url = url;
         this.shortKey = CommonUtils.convertShortKey(this.url);
-//        this.shortUrl = Constants.CURRENT_PATH + this.shortKey;
-        this.shortUrl = "http://localhost:8888/redirect/" + this.shortKey;
+        this.shortUrl = Constants.CURRENT_PATH + this.shortKey;
     }
 
     public String getShortKey() {

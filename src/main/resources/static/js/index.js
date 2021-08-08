@@ -21,7 +21,7 @@ var main = {
             $('#shortUrl').attr('href',data);
             $('#shortUrl').text(data);
         }).fail(function (error) {
-            alert(JSON.stringify(error));
+            alert(error.responseText);
         });
     }
 }

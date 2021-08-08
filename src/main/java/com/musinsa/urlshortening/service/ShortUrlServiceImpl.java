@@ -14,7 +14,7 @@ public class ShortUrlServiceImpl implements ShortUrlService {
 
     private final ShortUrlRepository shortUrlRepository;
 
-    @Transactional(readOnly = true)
+    @Transactional
     @Override
     public String getShortUrl(final String url) {
         ShortUrl shortUrl = shortUrlRepository.findByShortKey(CommonUtils.convertShortKey(url))
@@ -31,6 +31,7 @@ public class ShortUrlServiceImpl implements ShortUrlService {
         );
     }
 
+    @Transactional(readOnly = true)
     @Override
     public String findOriginUrl(String shortKey) throws NotFoundException {
         return shortUrlRepository.findByShortKey(shortKey)

@@ -1,6 +1,8 @@
 package com.musinsa.urlshortening.utils;
 
-import org.apache.commons.validator.routines.UrlValidator;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 public class CommonUtils {
 
@@ -9,7 +11,10 @@ public class CommonUtils {
     public static final int SHORT_KEY_LENGTH = 8;
 
     public static void validateUrl(final String url) {
-        if (!new UrlValidator().isValid(url)) {
+        try {
+            new URL(url).toURI();
+        } catch (URISyntaxException | MalformedURLException e) {
+            e.printStackTrace();
             throw new IllegalArgumentException("URL 형식이 아닙니다.");
         }
     }
@@ -27,7 +32,7 @@ public class CommonUtils {
                 hash = (31 * hash) + urlArr[i];
             }
         }
-        return hash;
+        return hash & 0x7fffffff;
     }
 
     private static String encodeBase62(int hash) {
