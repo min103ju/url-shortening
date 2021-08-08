@@ -38,11 +38,11 @@ URL을 입력받아 짧게 줄여주고, Shortening된 URL을 입력하면 원�
 
   - Build
 
-    - `$ ./gradlew bootWar`
+    - `$ ./gradlew bootJar`
 
   - Execute
 
-    - `$ java -jar ./build/libs/.jar`
+    - `$ java -jar ./build/libs/url-shortening-*.jar`
 
     
 
