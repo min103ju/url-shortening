@@ -2,9 +2,9 @@ package com.musinsa.urlshortening.service;
 
 import com.musinsa.urlshortening.domain.url.ShortUrl;
 import com.musinsa.urlshortening.domain.url.ShortUrlRepository;
+import com.musinsa.urlshortening.exception.NotFoundException;
 import com.musinsa.urlshortening.utils.CommonUtils;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,9 +33,10 @@ public class ShortUrlServiceImpl implements ShortUrlService {
 
     @Transactional(readOnly = true)
     @Override
-    public String findOriginUrl(String shortKey) throws NotFoundException {
+    public String findOriginUrl(String shortKey) {
         return shortUrlRepository.findByShortKey(shortKey)
-            .orElseThrow(() -> new NotFoundException()).getUrl();
+            .orElseThrow(() -> new NotFoundException("단축 URL이 존재하지 않습니다."))
+            .getUrl();
     }
 
 }

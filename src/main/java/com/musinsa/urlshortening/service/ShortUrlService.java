@@ -1,7 +1,7 @@
 package com.musinsa.urlshortening.service;
 
 import com.musinsa.urlshortening.domain.url.ShortUrl;
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
+import com.musinsa.urlshortening.exception.NotFoundException;
 
 public interface ShortUrlService {
 
