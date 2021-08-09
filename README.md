@@ -38,7 +38,7 @@ URL을 입력받아 짧게 줄여주고, Shortening된 URL을 입력하면 원�
 
   - Repository Clone
 
-    - `$ git clone https://github.com/min103ju`
+    - `$ git clone https://github.com/min103ju/url-shortening`
 
     
 
